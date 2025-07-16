@@ -4,6 +4,7 @@ import conn from './db/conn.js';
 import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize';
 import Task from './models/Task.js';
+import taskRouter from './router/taskRouter.js';
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -27,6 +28,8 @@ app.use(
 app.use(express.json());
 
 app.use(express.static('public'));
+
+app.use('/tasks', taskRouter);
 
 const PORT = process.env.PORT || 3000;
 
